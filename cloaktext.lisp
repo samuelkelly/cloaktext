@@ -1,22 +1,8 @@
-; The grammar.
+;;;; Note: The sentences created by this program are very
+;;;; unrealistic. I don't think this is the best way to do it.  I
+;;;; think a better strategy might be to 
 
-;; (sentence (noun-phrase verb-phrase))
-;; (verb-phrase (intransitive-verb)
-;; 	     (transitive-verb noun-phrase)
-;; 	     (verb-phrase prepositional-phrase))
-;; (noun-phrase (determiner noun)
-;; 	     (noun-phrase prepositional-phrase))
-;; (prepositional-phrase (preposition noun-phrase))
-;; (intransitive-verb ((word sleeps)))
-;; (transitive-verb ((word saw)))
-;; (noun ((word man) (word woman) (word telescope)))
-;; (determiner (word the))
-;; (preposition ((word with) (word in)))
-
-;; (defparameter *grammar* '((sentence (noun verb))
-;; 			  (noun (man))
-;; 			  (verb (eat))))
-
+;;; The grammar.
 (defparameter *grammar*
   '((sentence (noun-phrase verb-phrase))
     (verb-phrase (intransitive-verb)
@@ -60,6 +46,7 @@
 (defun flat-derive (lst)
   (flatten (derive lst)))
 
+;;; Completely derive the "string" LST.
 (defun derive-complete (lst)
   (let ((derived-list (flat-derive lst)))
     (if (equal derived-list lst)
